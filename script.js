@@ -1,32 +1,9 @@
-//url
-// let homeurl =
-//   "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let worldurl =
-//   "https://api.nytimes.com/svc/topstories/v2/world.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let politicsurl =
-//   "https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let magazineurl =
-//   "https://api.nytimes.com/svc/topstories/v2/magazine.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let technologyurl =
-//   "https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let scienceurl =
-//   "https://api.nytimes.com/svc/topstories/v2/science.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let healthurl =
-//   "https://api.nytimes.com/svc/topstories/v2/health.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let sportsurl =
-//   "https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let artsurl =
-//   "https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let fashionurl =
-//   "https://api.nytimes.com/svc/topstories/v2/fashion.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let foodurl =
-//   "https://api.nytimes.com/svc/topstories/v2/food.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-// let travelurl =
-//   "https://api.nytimes.com/svc/topstories/v2/travel.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35";
-
 //container
 let container = document.createElement("div");
 container.className = "container";
+container.setAttribute("data-spy", "scroll");
+container.setAttribute("data-target", ".navbar");
+container.setAttribute("data-offset", "50");
 //heading
 let heading = document.createElement("h1");
 heading.innerHTML = "newyork times";
@@ -340,7 +317,7 @@ async function loadcontent(name) {
       cardImgDiv.appendChild(cardImg);
     });
   } catch (err) {
-    alert(err);
+    console.log(err);
   }
 }
 
