@@ -275,7 +275,6 @@ async function loadcontent(name) {
       `https://api.nytimes.com/svc/topstories/v2/${name}.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35`
     );
     let response = await news.json();
-    console.log(response);
 
     response.results.map((article) => {
       let cardDiv = document.createElement("div");
