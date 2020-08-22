@@ -24,6 +24,7 @@ h1 {
   border: none;
   outline: none;
   cursor: pointer;
+  z-index: 1;
 }
 
 #btnScrollToTop:active {

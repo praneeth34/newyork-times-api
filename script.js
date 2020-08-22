@@ -257,8 +257,22 @@ btnul.appendChild(item12);
 
 let line2 = document.createElement("hr");
 container.appendChild(line2);
-
-//home view
+//scroll-up
+let scrollTopBtn = document.createElement("button");
+scrollTopBtn.id = "btnScrollToTop";
+scrollTopBtn.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
+let icon = document.createElement("i");
+icon.className = "material-icons";
+icon.innerHTML = "arrow_upward";
+scrollTopBtn.appendChild(icon);
+container.appendChild(scrollTopBtn);
+//content
 async function loadcontent(name) {
   try {
     let news = await fetch(
@@ -329,21 +343,6 @@ async function loadcontent(name) {
     alert(err);
   }
 }
-
-let scrollTopBtn = document.createElement("button");
-scrollTopBtn.id = "btnScrollToTop";
-scrollTopBtn.addEventListener("click", function () {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "smooth",
-  });
-});
-let icon = document.createElement("i");
-icon.className = "material-icons";
-icon.innerHTML = "arrow_upward";
-scrollTopBtn.appendChild(icon);
-container.appendChild(scrollTopBtn);
 
 //world news
 // function loadcontent(name) {
