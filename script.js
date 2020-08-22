@@ -26,7 +26,8 @@ navbarToggler.appendChild(togglerIcon);
 buttonGroup.appendChild(navbarToggler);
 //inner-navbar
 let btnul = document.createElement("ul");
-btnul.className = "navbar-nav";
+btnul.className = "nav nav-tabs";
+btnul.setAttribute("role", "tablist");
 let navContent = document.createElement("div");
 navContent.className = "collapse navbar-collapse";
 navContent.setAttribute("id", "collapse_target");
@@ -37,11 +38,16 @@ let item1 = document.createElement("li");
 item1.className = "nav-item";
 let homeBtn = document.createElement("button");
 homeBtn.className = "btn";
-homeBtn.setAttribute("type", "button");
 homeBtn.innerHTML = "HOME";
 homeBtn.id = "home";
-homeBtn.setAttribute("onclick", loadcontent(homeBtn.id));
-homeBtn.setAttribute("selected", true);
+homeBtn.addEventListener(
+  "click",
+  function () {
+    contentDiv.innerHTML = "";
+    loadcontent(homeBtn.id);
+  },
+  true
+);
 item1.appendChild(homeBtn);
 btnul.appendChild(item1);
 //2
@@ -55,6 +61,7 @@ worldBtn.id = "world";
 worldBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(worldBtn.id);
   },
   true
@@ -72,6 +79,7 @@ politicsBtn.id = "politics";
 politicsBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(politicsBtn.id);
   },
   true
@@ -89,6 +97,7 @@ magazineBtn.id = "magazine";
 magazineBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(magazineBtn.id);
   },
   true
@@ -106,6 +115,7 @@ technologyBtn.id = "technology";
 technologyBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(technologyBtn.id);
   },
   true
@@ -123,6 +133,7 @@ scienceBtn.id = "science";
 scienceBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(scienceBtn.id);
   },
   true
@@ -140,6 +151,7 @@ healthBtn.id = "health";
 healthBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(healthBtn.id);
   },
   true
@@ -157,6 +169,7 @@ sportsBtn.id = "sports";
 sportsBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(sportsBtn.id);
   },
   true
@@ -174,6 +187,7 @@ artsBtn.id = "arts";
 artsBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(artsBtn.id);
   },
   true
@@ -191,6 +205,7 @@ fashionBtn.id = "fashion";
 fashionBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(fashionBtn.id);
   },
   true
@@ -208,6 +223,7 @@ foodBtn.id = "food";
 foodBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(foodBtn.id);
   },
   true
@@ -225,6 +241,7 @@ travelBtn.id = "travel";
 travelBtn.addEventListener(
   "click",
   function () {
+    contentDiv.innerHTML = "";
     loadcontent(travelBtn.id);
   },
   true
@@ -250,6 +267,8 @@ icon.innerHTML = "arrow_upward";
 scrollTopBtn.appendChild(icon);
 container.appendChild(scrollTopBtn);
 //content
+let contentDiv = document.createElement("div");
+container.appendChild(contentDiv);
 async function loadcontent(name) {
   try {
     let news = await fetch(
@@ -261,7 +280,7 @@ async function loadcontent(name) {
     response.results.map((article) => {
       let cardDiv = document.createElement("div");
       cardDiv.className = "card mb-3";
-      container.append(cardDiv);
+      contentDiv.append(cardDiv);
       //inner card
       let cardRow = document.createElement("div");
       cardRow.className = "row no-gutters";
@@ -321,8 +340,12 @@ async function loadcontent(name) {
   }
 }
 
+//home event
+document.addEventListener("DOMContentLoaded", loadcontent(homeBtn.id));
+document.getElementsByTagName("body")[0].appendChild(container);
+
 //world news
-// function loadcontent(name) {
+// function home(name) {
 //   fetch(
 //     `https://api.nytimes.com/svc/topstories/v2/${name}.json?api-key=CgtoQ94MGciOvH6W96PN3AlVaEFG1Q35`
 //   )
@@ -379,5 +402,3 @@ async function loadcontent(name) {
 //       });
 //     });
 // }
-
-document.getElementsByTagName("body")[0].appendChild(container);
